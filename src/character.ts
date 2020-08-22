@@ -1,5 +1,5 @@
 import { HeroClassType, IHeroClass, getHeroClass } from "./heroClasses";
-import { HeroRaceType, IRace } from "./heroRaces";
+import { IRace } from "./heroRaces";
 
 export default class Character {
   id: number;
@@ -17,14 +17,12 @@ export default class Character {
   }
 
   shout = () => {
-    if (this.heroClass) {
-      this.heroClass.shout(this.name);
-    }
+    return this.heroClass?.shout(this.name);
   };
 }
 
 // Maybe move this stuff to some sort of "CharacterQuery" module or something
-interface CharacterRecord {
+export interface CharacterRecord {
   id: number;
   name: string;
   heroClass: HeroClassType;
@@ -32,7 +30,7 @@ interface CharacterRecord {
 }
 
 const listRows = (rows: Array<CharacterRecord>) => {
-  console.log(rows);
+  // console.log(rows);
 };
 
 const doShout = (rows: Array<CharacterRecord>) => {
@@ -42,10 +40,11 @@ const doShout = (rows: Array<CharacterRecord>) => {
   });
 };
 
-const mapToAllCharacters = (func: any) => {
-  // db.all(`SELECT * FROM characters`, func);
-  // db.run(`SELECT * FROM characters`, func);
-};
+export async function fetchChars() {
+  return fetch("/data/test.json")
+    .then((response) => response.json())
+    .then((result) => result.characters);
+}
 
 export const fetchAllCharacters = (func: any) => {
   fetch("/data/test.json")

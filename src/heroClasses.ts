@@ -62,7 +62,7 @@ export const getHeroClass = (heroClassType: HeroClassType) => {
 
 const getHeroClassName = (index: number) => {
   var found = HeroClasses.find((i) => i.id === index);
-  return found ? found.name : 'unknown';
+  return found ? found.name : "unknown";
 };
 
 // These will probably each move into their own files.
@@ -80,7 +80,7 @@ export class Hunter implements IHeroClass {
   }
 
   shout = (name: string) => {
-    console.log(`I, ${name}, hunt things!`);
+    return `I, ${name}, hunt things!`;
   };
 }
 
@@ -96,7 +96,7 @@ export class Warlock implements IHeroClass {
   }
 
   shout = (name: string) => {
-    console.log(`I, ${name}, summon demons!`);
+    return `I, ${name}, summon demons!`;
   };
 }
 
@@ -112,6 +112,6 @@ export class Warrior implements IHeroClass {
   }
 
   shout = (name: string) => {
-    console.log(`I, ${name}, bash things real hard!`);
+    return `I, ${name}, bash things real hard!`;
   };
 }
