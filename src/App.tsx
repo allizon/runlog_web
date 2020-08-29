@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "tachyons";
 
 const fetchTest = async () => {
   const out = await fetch("http://localhost:8080/runs/all")
@@ -23,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App mw8 center pa2">
       <h1>Runlog</h1>
       <pre>waaah i want some {output.toString()}</pre>
     </div>
